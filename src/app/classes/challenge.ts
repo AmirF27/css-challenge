@@ -2,18 +2,18 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export class Challenge {
   private sanitizer: DomSanitizer;
-  private html: string;
-  private css: string;
   readonly id: number;
   readonly title: string;
+  readonly html: string;
+  readonly css: string;
   readonly js: string;
 
   constructor(props, sanitizer: DomSanitizer) {
     this.sanitizer = sanitizer;
-    this.html = props.html;
-    this.css = props.css;
     this.id = props.id;
     this.title = props.title;
+    this.html = props.html;
+    this.css = props.css;
     this.js = props.js || '';
   }
 

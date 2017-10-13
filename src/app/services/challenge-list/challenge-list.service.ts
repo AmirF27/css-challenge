@@ -6,14 +6,19 @@ import challenges from '../../data/challenges';
 
 @Injectable()
 export class ChallengeListService {
-  private challenges: any[] = challenges;
+  private _challenges: any[] = challenges;
 
   constructor(
     private sanitizer: DomSanitizer
   ) { }
 
+  // mostly for testing purposes
+  set challenges(challenges: any[]) {
+    this._challenges = challenges;
+  }
+
   getById(id: number): Challenge {
-    const challenge = this.challenges.find(challenge => challenge.id === id);
+    const challenge = this._challenges.find(challenge => challenge.id === id);
 
     return challenge ? new Challenge(challenge, this.sanitizer) : null;
   }

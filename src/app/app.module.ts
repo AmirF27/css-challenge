@@ -1,16 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 
 import { ChallengeListService } from './services/challenge-list/challenge-list.service';
 
+import { AppComponent } from './app.component';
+import { ChallengeComponent } from './components/challenge/challenge.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChallengeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [
     ChallengeListService

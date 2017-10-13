@@ -21,4 +21,18 @@ export class Challenge {
     const html = `<style>${this.css}</style>` + this.html;
     return this.sanitizer.bypassSecurityTrustHtml(html);
   }
+
+  injectJs(): void {
+    if (this.js) {
+      const script = document.createElement('script');
+
+      try {
+        script.appendChild(document.createTextNode(this.js));
+      } catch (e) {
+        script.text = this.js;
+      }
+
+      document.body.appendChild(script);
+    }
+  }
 }

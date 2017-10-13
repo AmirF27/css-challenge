@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { SafeHtml } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
@@ -12,10 +12,11 @@ import { Challenge } from '../../classes/challenge';
   templateUrl: './challenge.component.html',
   styleUrls: ['./challenge.component.scss']
 })
-export class ChallengeComponent implements OnInit, OnDestroy {
+export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
   readonly notFoundMessage = 'Challenge not found.';
 
   private challenge: Challenge;
+  private challengeHtml: SafeHtml;
   private sub: Subscription;
 
   constructor(
@@ -25,6 +26,10 @@ export class ChallengeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getChallenge();
+  }
+
+  ngAfterViewChecked(): void {
+    this.challenge.injectJs();
   }
 
   ngOnDestroy(): void {
@@ -37,6 +42,7 @@ export class ChallengeComponent implements OnInit, OnDestroy {
     this.sub = this.route.paramMap.subscribe((params: ParamMap) => {
       const challengeId = parseInt(params.get('id'), 10);
       this.challenge = this.challengeList.getById(challengeId);
+      this.challengeHtml = this.challenge.formatHtml();
     });
   }
 }

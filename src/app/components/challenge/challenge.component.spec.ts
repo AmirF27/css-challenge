@@ -11,7 +11,7 @@ import { ChallengeListService } from '../../services/challenge-list/challenge-li
 describe('ChallengeComponent', () => {
   let fixture: ComponentFixture<ChallengeComponent>;
   let component: ChallengeComponent;
-  let compiled: Element;
+  let compiled: HTMLElement;
   const activatedRouteStub = new ActivatedRouteStub();
   let sanitizer: DomSanitizer;
 
@@ -57,10 +57,6 @@ describe('ChallengeComponent', () => {
   });
 
   describe('challenge was found', () => {
-    let fixture: ComponentFixture<ChallengeComponent>;
-    let component: ChallengeComponent;
-    let compiled: Element;
-
     beforeEach(inject([DomSanitizer], (domSanitizer: DomSanitizer) => {
       activatedRouteStub.testParamMap = { id: 1 };
       fixture = TestBed.createComponent(ChallengeComponent);

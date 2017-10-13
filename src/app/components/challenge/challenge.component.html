@@ -1,7 +1,7 @@
 <ng-template *ngIf="challenge; then challengeView else notFound"></ng-template>
 
 <ng-template #challengeView>
-  <div [innerHTML]="challenge.formatHtml()"></div>
+  <div [innerHTML]="challengeHtml"></div>
 </ng-template>
 
 <ng-template #notFound>

@@ -1,9 +1,9 @@
 <ng-template *ngIf="challenge; then challengeView else notFound"></ng-template>
 
 <ng-template #challengeView>
-  <div #challengeView [innerHTML]="challenge.formatHtml()"></div>
+  <div [innerHTML]="challenge.formatHtml()"></div>
 </ng-template>
 
 <ng-template #notFound>
-  <div #notFound>Challenge not found.</div>
+  <div>{{notFoundMessage}}</div>
 </ng-template>

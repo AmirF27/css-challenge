@@ -13,6 +13,8 @@ import { Challenge } from '../../classes/challenge';
   styleUrls: ['./challenge.component.scss']
 })
 export class ChallengeComponent implements OnInit, OnDestroy {
+  readonly notFoundMessage = 'Challenge not found.';
+
   private challenge: Challenge;
   private sub: Subscription;
 
@@ -26,7 +28,9 @@ export class ChallengeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
   getChallenge(): void {

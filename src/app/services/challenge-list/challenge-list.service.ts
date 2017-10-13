@@ -15,6 +15,6 @@ export class ChallengeListService {
   getById(id: number): Challenge {
     const challenge = this.challenges.find(challenge => challenge.id === id);
 
-    return new Challenge(challenge, this.sanitizer);
+    return challenge ? new Challenge(challenge, this.sanitizer) : null;
   }
 }

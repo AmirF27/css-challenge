@@ -23,16 +23,17 @@ export class Challenge {
   }
 
   injectJs(): void {
-    if (this.js) {
-      const script = document.createElement('script');
+    if (!this.js) return;
 
-      try {
-        script.appendChild(document.createTextNode(this.js));
-      } catch (e) {
-        script.text = this.js;
-      }
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
 
-      document.body.appendChild(script);
+    try {
+      script.appendChild(document.createTextNode(this.js));
+    } catch (e) {
+      script.text = this.js;
     }
+
+    document.body.appendChild(script);
   }
 }

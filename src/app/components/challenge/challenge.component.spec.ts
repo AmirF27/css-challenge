@@ -13,23 +13,8 @@ describe('ChallengeComponent', () => {
   let component: ChallengeComponent;
   let compiled: HTMLElement;
   const activatedRouteStub = new ActivatedRouteStub();
-  let sanitizer: DomSanitizer;
 
-  const challengeListStub = {
-    challenge: {
-      id: 1,
-      title: '1',
-      html: '<span class="stub">Test</span>',
-      css: '.stub { color: orange; }'
-    },
-    getById(id) {
-      if (this.challenge.id === id) {
-        return new Challenge(this.challenge, sanitizer);
-      } else {
-        return null;
-      }
-    }
-  };
+  let challengeListStub;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -42,12 +27,29 @@ describe('ChallengeComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(inject([DomSanitizer], (domSanitizer: DomSanitizer) => {
+  beforeEach(() => {
     fixture = TestBed.createComponent(ChallengeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     compiled = fixture.debugElement.nativeElement;
-    sanitizer = domSanitizer;
+  });
+
+  beforeAll(inject([DomSanitizer], (sanitizer: DomSanitizer) => {
+    challengeListStub = {
+      challenge: {
+        id: 1,
+        title: '1',
+        html: '<span class="stub">Test</span>',
+        css: '.stub { color: orange; }'
+      },
+      getById(id) {
+        if (this.challenge.id === id) {
+          return new Challenge(this.challenge, sanitizer);
+        } else {
+          return null;
+        }
+      }
+    };
   }));
 
   it('should be created', () => {
@@ -57,14 +59,13 @@ describe('ChallengeComponent', () => {
   });
 
   describe('challenge was found', () => {
-    beforeEach(inject([DomSanitizer], (domSanitizer: DomSanitizer) => {
+    beforeEach(() => {
       activatedRouteStub.testParamMap = { id: 1 };
       fixture = TestBed.createComponent(ChallengeComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
       compiled = fixture.debugElement.nativeElement;
-      sanitizer = domSanitizer;
-    }));
+    });
 
     it('should display expected HTML', () => {
       const elem = compiled.querySelector('div span');
@@ -84,14 +85,13 @@ describe('ChallengeComponent', () => {
   });
 
   describe('challenge was not found', () => {
-    beforeEach(inject([DomSanitizer], (domSanitizer: DomSanitizer) => {
+    beforeEach(() => {
       activatedRouteStub.testParamMap = { id: 0 };
       fixture = TestBed.createComponent(ChallengeComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
       compiled = fixture.debugElement.nativeElement;
-      sanitizer = domSanitizer;
-    }));
+    });
 
     it('should display an error message', () => {
       expect(compiled.querySelector('div').textContent).toBe(component.notFoundMessage);

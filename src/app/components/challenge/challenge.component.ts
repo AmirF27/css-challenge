@@ -29,7 +29,9 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   ngAfterViewChecked(): void {
-    this.challenge.injectJs();
+    if (this.challenge) {
+      this.challenge.injectJs();
+    }
   }
 
   ngOnDestroy(): void {
@@ -42,7 +44,10 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.sub = this.route.paramMap.subscribe((params: ParamMap) => {
       const challengeId = parseInt(params.get('id'), 10);
       this.challenge = this.challengeList.getById(challengeId);
-      this.challengeHtml = this.challenge.formatHtml();
+
+      if (this.challenge) {
+        this.challengeHtml = this.challenge.formatHtml();
+      }
     });
   }
 }

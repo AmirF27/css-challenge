@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { SafeHtml } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/switchMap';
 
@@ -16,7 +15,7 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
   readonly notFoundMessage = 'Challenge not found.';
 
   private challenge: Challenge;
-  private challengeHtml: SafeHtml;
+  private challengeHtml: string;
   private sub: Subscription;
 
   constructor(

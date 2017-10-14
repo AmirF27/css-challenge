@@ -1,15 +1,11 @@
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-
 export class Challenge {
-  private sanitizer: DomSanitizer;
   readonly id: number;
   readonly title: string;
   readonly html: string;
   readonly css: string;
   readonly js: string;
 
-  constructor(props, sanitizer: DomSanitizer) {
-    this.sanitizer = sanitizer;
+  constructor(props) {
     this.id = props.id;
     this.title = props.title;
     this.html = props.html;
@@ -17,9 +13,8 @@ export class Challenge {
     this.js = props.js || '';
   }
 
-  formatHtml(): SafeHtml {
-    const html = `<style>${this.css}</style>` + this.html;
-    return this.sanitizer.bypassSecurityTrustHtml(html);
+  formatHtml(): string {
+    return `<style>${this.css}</style>${this.html}`;
   }
 
   injectJs(): void {

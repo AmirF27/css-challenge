@@ -1,12 +1,12 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
 
 import { ActivatedRouteStub } from '../../../testing/router-stubs';
 import { Challenge } from '../../classes/challenge';
 
 import { ChallengeComponent } from './challenge.component';
 import { ChallengeListService } from '../../services/challenge-list/challenge-list.service';
+import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 
 describe('ChallengeComponent', () => {
   let fixture: ComponentFixture<ChallengeComponent>;
@@ -14,11 +14,28 @@ describe('ChallengeComponent', () => {
   let compiled: HTMLElement;
   const activatedRouteStub = new ActivatedRouteStub();
 
-  let challengeListStub;
+  const challengeListStub = {
+    challenge: {
+      id: 1,
+      title: '1',
+      html: '<span class="stub">Test</span>',
+      css: '.stub { color: orange; }'
+    },
+    getById(id) {
+      if (this.challenge.id === id) {
+        return new Challenge(this.challenge);
+      } else {
+        return null;
+      }
+    }
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ChallengeComponent],
+      declarations: [
+        ChallengeComponent,
+        SafeHtmlPipe
+      ],
       providers: [
         { provide: ChallengeListService, useValue: challengeListStub },
         { provide: ActivatedRoute, useValue: activatedRouteStub }
@@ -33,24 +50,6 @@ describe('ChallengeComponent', () => {
     fixture.detectChanges();
     compiled = fixture.debugElement.nativeElement;
   });
-
-  beforeAll(inject([DomSanitizer], (sanitizer: DomSanitizer) => {
-    challengeListStub = {
-      challenge: {
-        id: 1,
-        title: '1',
-        html: '<span class="stub">Test</span>',
-        css: '.stub { color: orange; }'
-      },
-      getById(id) {
-        if (this.challenge.id === id) {
-          return new Challenge(this.challenge, sanitizer);
-        } else {
-          return null;
-        }
-      }
-    };
-  }));
 
   it('should be created', () => {
     fixture = TestBed.createComponent(ChallengeComponent);
@@ -94,7 +93,8 @@ describe('ChallengeComponent', () => {
     });
 
     it('should display an error message', () => {
-      expect(compiled.querySelector('div').textContent).toBe(component.notFoundMessage);
+      expect(compiled.querySelector('div').textContent).
+        toBe(component.notFoundMessage);
     });
   });
 });

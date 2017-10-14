@@ -7,11 +7,13 @@ import { ChallengeListService } from './services/challenge-list/challenge-list.s
 
 import { AppComponent } from './app.component';
 import { ChallengeComponent } from './components/challenge/challenge.component';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChallengeComponent
+    ChallengeComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

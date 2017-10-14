@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { Challenge } from '../../classes/challenge';
 import challenges from '../../data/challenges';
@@ -7,10 +6,6 @@ import challenges from '../../data/challenges';
 @Injectable()
 export class ChallengeListService {
   private _challenges: any[] = challenges;
-
-  constructor(
-    private sanitizer: DomSanitizer
-  ) { }
 
   // mostly for testing purposes
   set challenges(challenges: any[]) {
@@ -20,6 +15,6 @@ export class ChallengeListService {
   getById(id: number): Challenge {
     const challenge = this._challenges.find(challenge => challenge.id === id);
 
-    return challenge ? new Challenge(challenge, this.sanitizer) : null;
+    return challenge ? new Challenge(challenge) : null;
   }
 }

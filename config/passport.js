@@ -1,7 +1,7 @@
 'use strict';
 
 const githubStrategy = require('./passport/github');
-const User = require('../user/user.model');
+const User = require('../server/api/user/user.model');
 
 module.exports = (passport) => {
   passport.serializeUser((user, done) => done(null, user.id));

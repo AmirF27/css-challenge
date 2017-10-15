@@ -8,13 +8,13 @@ if (process.env.NODE_ENV != 'production') {
   require('dotenv').config();
 }
 
-const config = require('./server/config');
+const config = require('./config');
 
 // Establish MongoDB connection
-require('./server/config/db');
+require('./config/db');
 
 // Configure passport
-require('./server/config/passport')(passport);
+require('./config/passport')(passport);
 
 app.listen(config.port, () => {
   console.log(`Listening on port ${config.port}.`);

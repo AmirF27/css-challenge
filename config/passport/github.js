@@ -3,7 +3,7 @@
 const GitHubStrategy = require('passport-github').Strategy;
 
 const config = require('../');
-const User = require('../../user/user.model');
+const User = require('../../server/api/user/user.model');
 
 module.exports = new GitHubStrategy({
     clientID: config.github.clientID,

@@ -1,13 +1,21 @@
 const express = require('express');
-
-const config = require('./server/config');
+const passport = require('passport');
 
 const app = express();
 
-require('dotenv').config();
+// Load environment variables
+if (process.env.NODE_ENV != 'production') {
+  require('dotenv').config();
+}
 
+const config = require('./server/config');
+
+// Establish MongoDB connection
 require('./server/config/db');
 
-const server = app.listen(config.port, () => {
-  console.log(`Listening on port ${server.address().port}.`);
+// Configure passport
+require('./server/config/passport')(passport);
+
+app.listen(config.port, () => {
+  console.log(`Listening on port ${config.port}.`);
 });

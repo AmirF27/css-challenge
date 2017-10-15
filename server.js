@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const passport = require('passport');
 
@@ -14,7 +16,12 @@ const config = require('./config');
 require('./config/db');
 
 // Configure passport
-require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport');
+
+// Setup routes
+app.use(require('./config/routes'));
 
 app.listen(config.port, () => {
   console.log(`Listening on port ${config.port}.`);

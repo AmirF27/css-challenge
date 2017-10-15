@@ -2,7 +2,9 @@
 
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URL, { useMongoClient: true }, (err) => {
+const config = require('./');
+
+mongoose.connect(config.db, { useMongoClient: true }, (err) => {
   if (err) {
     console.error(err);
     process.exit(1);

@@ -1,13 +1,13 @@
 const express = require('express');
 
-const app = express();
+const config = require('./server/config');
 
-const DEFAULT_PORT = 3000;
+const app = express();
 
 require('dotenv').config();
 
 require('./server/config/db');
 
-const server = app.listen(process.env.PORT || DEFAULT_PORT, () => {
+const server = app.listen(config.port, () => {
   console.log(`Listening on port ${server.address().port}.`);
 });

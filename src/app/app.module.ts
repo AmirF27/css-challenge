@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { ChallengeComponent } from './components/challenge/challenge.component';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChallengeComponent,
     SafeHtmlPipe,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

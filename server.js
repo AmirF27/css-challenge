@@ -1,7 +1,6 @@
 'use strict';
 
 const express = require('express');
-const passport = require('passport');
 
 const app = express();
 
@@ -15,9 +14,8 @@ const config = require('./config');
 // Establish MongoDB connection
 require('./config/db');
 
-// Configure passport
-app.use(passport.initialize());
-app.use(passport.session());
+// Configure app
+require('./config/express')(app);
 require('./config/passport');
 
 // Setup routes

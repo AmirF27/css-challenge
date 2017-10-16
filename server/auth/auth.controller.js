@@ -12,7 +12,7 @@ const generateAccessToken = (req, res) => {
     subject: req.user.id
   });
 
-  res.render('authenticated', { token });
+  res.render('auth/authenticated', { token, profile: req.user });
 };
 
 router.get('/github',

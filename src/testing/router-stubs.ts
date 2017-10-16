@@ -8,7 +8,7 @@ export class ActivatedRouteStub {
   paramMap = this.subject.asObservable();
 
   private _testParamMap: ParamMap;
-  get testParamMap() { return this._testParamMap }
+  get testParamMap() { return this._testParamMap; }
   set testParamMap(params: {}) {
     this._testParamMap = convertToParamMap(params);
     this.subject.next(this._testParamMap);

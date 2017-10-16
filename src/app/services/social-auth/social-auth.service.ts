@@ -48,7 +48,7 @@ export class SocialAuthService {
 
   private openPopup(): void {
     this.popup = this.window.open();
-    this.popup.document.body.textContent ='Authenticating...';
+    this.popup.document.body.textContent = 'Authenticating...';
     this.popup.focus();
   }
 }

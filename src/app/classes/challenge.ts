@@ -18,7 +18,9 @@ export class Challenge {
   }
 
   injectJs(): void {
-    if (!this.js) return;
+    if (!this.js) {
+      return;
+    }
 
     const script = document.createElement('script');
     script.type = 'text/javascript';

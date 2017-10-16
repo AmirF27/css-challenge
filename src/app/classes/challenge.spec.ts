@@ -1,6 +1,6 @@
 import { Challenge } from './challenge';
 
-const TEXT = 'test'
+const TEXT = 'test';
 const CSS_CLASS = 'test-element';
 const JS = `$(".${CSS_CLASS}").text("${TEXT}");`;
 

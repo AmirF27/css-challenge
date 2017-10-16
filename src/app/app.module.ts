@@ -26,7 +26,8 @@ import { LoginComponent } from './components/login/login.component';
   ],
   providers: [
     ChallengeListService,
-    SocialAuthService
+    SocialAuthService,
+    { provide: Window, useValue: window }
   ],
   bootstrap: [AppComponent]
 })

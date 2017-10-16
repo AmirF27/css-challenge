@@ -18,3 +18,7 @@ export class ActivatedRouteStub {
     return { paramMap: this.testParamMap };
   }
 }
+
+export class RouterStub {
+  navigate(commands: any[]) { return commands; }
+}

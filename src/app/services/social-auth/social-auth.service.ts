@@ -1,13 +1,13 @@
 import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-const TOKEN_ITEM = 'token';
-const PROFILE_ITEM = 'profile';
-
 @Injectable()
 export class SocialAuthService {
   authUrl: string;
   private popup: Window;
+
+  readonly tokenItem = 'token';
+  readonly profileItem = 'profile';
 
   constructor(
     @Inject(Window) private window: Window,
@@ -37,13 +37,13 @@ export class SocialAuthService {
   }
 
   private setSession(token: string, profile: string): void {
-    localStorage.setItem(TOKEN_ITEM, token);
-    localStorage.setItem(PROFILE_ITEM, profile);
+    localStorage.setItem(this.tokenItem, token);
+    localStorage.setItem(this.profileItem, profile);
   }
 
   private clearSession(): void {
-    localStorage.removeItem(TOKEN_ITEM);
-    localStorage.removeItem(PROFILE_ITEM);
+    localStorage.removeItem(this.tokenItem);
+    localStorage.removeItem(this.profileItem);
   }
 
   private openPopup(): void {

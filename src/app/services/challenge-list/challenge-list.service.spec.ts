@@ -39,24 +39,26 @@ describe('ChallengeListService', () => {
       expect(challengeList).toBeTruthy();
   }));
 
-  it('#getById should return correct challenge',
-    inject([ChallengeListService], (challengeList: ChallengeListService) => {
-      challengeList.challenges = challenges;
+  describe('#getById', () => {
+    it('should return correct challenge',
+      inject([ChallengeListService], (challengeList: ChallengeListService) => {
+        challengeList.challenges = challenges;
 
-      const id = 1;
-      const challenge = challengeList.getById(id);
+        const id = 1;
+        const challenge = challengeList.getById(id);
 
-      expect(challenge.id).toBe(id);
-      expect(challenge.html).toBe(html[`CHALLENGE_${id}`]);
-  }));
+        expect(challenge.id).toBe(id);
+        expect(challenge.html).toBe(html[`CHALLENGE_${id}`]);
+    }));
 
-  it('#getById should return null if challenge was not found',
-    inject([ChallengeListService], (challengeList: ChallengeListService) => {
-      challengeList.challenges = challenges;
+    it('should return null if challenge was not found',
+      inject([ChallengeListService], (challengeList: ChallengeListService) => {
+        challengeList.challenges = challenges;
 
-      const id = 0;
-      const challenge = challengeList.getById(id);
+        const id = 0;
+        const challenge = challengeList.getById(id);
 
-      expect(challenge).toBe(null);
-  }));
+        expect(challenge).toBe(null);
+    }));
+  });
 });

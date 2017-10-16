@@ -8,7 +8,12 @@
     Authenticated successfully.
 
     <script type="text/javascript">
-      window.onAuthCallback('{{token}}', '{{profile}}');
+      const data = {
+        token: '{{{token}}}',
+        profile: '{{{profile}}}'
+      };
+
+      window.opener.postMessage(data, '*');
     </script>
   </body>
 </html>

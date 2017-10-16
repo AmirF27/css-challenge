@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ChallengeListService } from './services/challenge-list/challenge-list.service';
+import { SocialAuthService } from './services/social-auth/social-auth.service';
 
 import { AppComponent } from './app.component';
 import { ChallengeComponent } from './components/challenge/challenge.component';
@@ -24,7 +25,8 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule
   ],
   providers: [
-    ChallengeListService
+    ChallengeListService,
+    SocialAuthService
   ],
   bootstrap: [AppComponent]
 })

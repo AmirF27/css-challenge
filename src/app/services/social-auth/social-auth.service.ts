@@ -6,18 +6,26 @@ const PROFILE_ITEM = 'profile';
 
 @Injectable()
 export class SocialAuthService {
+  authUrl: string;
+  private popup: Window;
+
   constructor(private router: Router) { }
 
   login(authUrl): void {
-    const popup = window.open(authUrl);
+    this.authUrl = authUrl;
+    this.openPopup();
 
-    (popup as any).onAuthCallback = (token, profile) => {
-      popup.close();
-      window.focus();
-      this.setSession(token, profile);
+    const listener = (event: MessageEvent) => {
+      // Make sure the message can be trusted (came from the same origin)
+      if (event.origin.indexOf(window.location.origin) >= 0) {
+        window.removeEventListener('message', listener);
+        this.popup.close();
+        window.focus();
+        this.setSession(event.data.token, event.data.profile);
+      }
     };
 
-    popup.focus();
+    window.addEventListener('message', listener);
   }
 
   logout(): void {
@@ -25,7 +33,7 @@ export class SocialAuthService {
     this.router.navigate(['/']);
   }
 
-  private setSession(token: any, profile: any): void {
+  private setSession(token: string, profile: string): void {
     localStorage.setItem(TOKEN_ITEM, token);
     localStorage.setItem(PROFILE_ITEM, profile);
   }
@@ -33,5 +41,11 @@ export class SocialAuthService {
   private clearSession(): void {
     localStorage.removeItem(TOKEN_ITEM);
     localStorage.removeItem(PROFILE_ITEM);
+  }
+
+  private openPopup(): void {
+    this.popup = window.open(this.authUrl);
+    this.popup.document.body.textContent ='Authenticating...';
+    this.popup.focus();
   }
 }

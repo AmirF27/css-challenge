@@ -6,13 +6,15 @@ const passport = require('passport');
 
 const config = require('../../config');
 
+const User = require('../api/user/user.model');
+
 const generateAccessToken = (req, res) => {
   const token = jwt.sign({}, config.auth.token.secret, {
     expiresIn: '7d',
     subject: req.user.id
   });
 
-  res.render('auth/authenticated', { token, profile: req.user });
+  res.render('authenticated', { token, profile: JSON.stringify(req.user) });
 };
 
 router.get('/github',

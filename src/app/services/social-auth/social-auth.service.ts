@@ -30,7 +30,7 @@ export class SocialAuthService {
     localStorage.setItem(PROFILE_ITEM, profile);
   }
 
-  private clearSession() {
+  private clearSession(): void {
     localStorage.removeItem(TOKEN_ITEM);
     localStorage.removeItem(PROFILE_ITEM);
   }

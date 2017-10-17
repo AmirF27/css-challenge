@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "supervisor -w server/ config/ -e js,html,json -- server.js"
+    "server": "supervisor -w server/ config/ server.js -e js,hbs,json -- server.js"
   },
   "private": true,
   "dependencies": {

@@ -7,7 +7,7 @@ const router = require('express').Router();
 const config = require('../../../config');
 const User = require('./user.model');
 
-router.post('/challenge',
+router.put('/challenge',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     req.user.addChallenge(req.body, (err) => {

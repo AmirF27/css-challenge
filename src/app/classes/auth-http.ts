@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {
   HttpClient,
   HttpHandler,
-  HttpHeaders
+  HttpHeaders,
+  HttpRequest
 } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -20,7 +21,7 @@ export class AuthHttp extends HttpClient {
     super(handler);
   }
 
-  post(url: string, body: any|null, options: any = {}): Observable<any> {
+  request(first: string|HttpRequest<any>, url?: string, options: any = {}): Observable<any> {
     if (!this.socialAuth.authenticated) {
       this.router.navigate(['login']);
       return Observable.empty();
@@ -28,7 +29,23 @@ export class AuthHttp extends HttpClient {
 
     options.headers = this.setHeaders(options.headers || new HttpHeaders());
 
-    return super.post(url, body, options);
+    if (first instanceof HttpRequest) {
+      return super.request(first);
+    } else {
+      return super.request(first, url, options);
+    }
+  }
+
+  post(url: string, body: any|null, options: any = {}): Observable<any> {
+    options.body = body;
+
+    return this.request('POST', url, options);
+  }
+
+  put(url: string, body: any|null, options: any = {}): Observable<any> {
+    options.body = body;
+
+    return this.request('PUT', url, options);
   }
 
   private setHeaders(headers: HttpHeaders): HttpHeaders {

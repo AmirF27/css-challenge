@@ -68,7 +68,7 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
     };
 
     this.authHttp
-      .post('/api/user/challenge', body)
+      .put('/api/user/challenge', body)
       .subscribe(console.log);
   }
 }

@@ -49,7 +49,7 @@ export class AuthHttp extends HttpClient {
   }
 
   private setHeaders(headers: HttpHeaders): HttpHeaders {
-    headers = headers.set('Authorization', `Bearer ${this.socialAuth.getToken()}`);
+    headers = headers.set('Authorization', `Bearer ${this.socialAuth.token}`);
 
     return headers;
   }

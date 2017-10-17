@@ -37,10 +37,6 @@ export class SocialAuthService {
     this.router.navigate(['']);
   }
 
-  getToken(): string {
-    return localStorage.getItem(this.tokenItem);
-  }
-
   private setSession(token: string, profile: string): void {
     localStorage.setItem(this.tokenItem, token);
     localStorage.setItem(this.profileItem, profile);
@@ -55,6 +51,10 @@ export class SocialAuthService {
     this.popup = this.window.open(this.authUrl);
     this.popup.document.body.textContent = 'Authenticating...';
     this.popup.focus();
+  }
+
+  get token(): string {
+    return localStorage.getItem(this.tokenItem);
   }
 
   get authenticated(): boolean {

@@ -11,6 +11,8 @@ module.exports = new GitHubStrategy({
     callbackURL: config.github.callbackURL
   },
   (accessToken, refreshToken, profile, done) => {
+    profile.id = parseInt(profile.id, 10);
+
     User.findOne({ 'github.id': profile.id }, (err, user) => {
       if (err) return done(err);
 

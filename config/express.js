@@ -1,5 +1,6 @@
 'use strict';
 
+const bodyParser = require('body-parser');
 const hbs = require('hbs');
 const passport = require('passport');
 const path = require('path');
@@ -12,4 +13,8 @@ module.exports = (app) => {
   // Initialize passport
   app.use(passport.initialize());
   app.use(passport.session());
+
+  // Setup body-parser
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
 };

@@ -20,7 +20,7 @@ export class SocialAuthService {
 
     const listener = (event: MessageEvent) => {
       // Make sure the message can be trusted (came from the same origin)
-      if (event.origin.indexOf(this.window.location.origin) >= 0) {
+      if (event.origin.indexOf(this.window.location.hostname) >= 0) {
         this.window.removeEventListener('message', listener);
         this.popup.close();
         this.window.focus();
@@ -36,6 +36,10 @@ export class SocialAuthService {
     this.router.navigate(['/']);
   }
 
+  getToken(): string {
+    return localStorage.getItem(this.tokenItem);
+  }
+
   private setSession(token: string, profile: string): void {
     localStorage.setItem(this.tokenItem, token);
     localStorage.setItem(this.profileItem, profile);
@@ -47,7 +51,7 @@ export class SocialAuthService {
   }
 
   private openPopup(): void {
-    this.popup = this.window.open();
+    this.popup = this.window.open(this.authUrl);
     this.popup.document.body.textContent = 'Authenticating...';
     this.popup.focus();
   }

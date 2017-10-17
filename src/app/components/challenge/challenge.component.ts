@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/switchMap';
 
 import { ChallengeListService } from '../../services/challenge-list/challenge-list.service';
+import { SocialAuthService } from '../../services/social-auth/social-auth.service';
 import { Challenge } from '../../classes/challenge';
 
 @Component({
@@ -18,9 +20,18 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
   private challengeHtml: string;
   private sub: Subscription;
 
+  formData = {
+    links: {
+      code: '',
+      live: ''
+    }
+  };
+
   constructor(
     private challengeList: ChallengeListService,
-    private route: ActivatedRoute
+    private socialAuth: SocialAuthService,
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -48,5 +59,21 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
         this.challengeHtml = this.challenge.formatHtml();
       }
     });
+  }
+
+  submitLinks(): void {
+    const body = {
+      id: this.challenge.id,
+      links: this.formData.links
+    };
+    
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.socialAuth.getToken()}`
+    });
+
+    this.http
+      .post('/api/user/challenge', body, { headers })
+      .subscribe(console.log);
   }
 }

@@ -14,9 +14,9 @@ module.exports = new GitHubStrategy({
     profile.id = parseInt(profile.id, 10);
 
     User.findOne({ 'github.id': profile.id }, (err, user) => {
-      if (err) return done(err);
+      if (err) { return done(err); }
 
-      if (user) return done(null, user);
+      if (user) { return done(null, user); }
 
       const newUser = new User({
         github: {
@@ -27,10 +27,9 @@ module.exports = new GitHubStrategy({
       });
 
       newUser.save((err) => {
-        if (err) return done(err);
+        if (err) { return done(err); }
 
         return done(null, newUser);
       });
     });
-  }
-);
+  });

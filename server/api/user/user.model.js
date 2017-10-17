@@ -20,12 +20,11 @@ const userSchema = new Schema({
   }]
 });
 
-Object.assign(userSchema.statics, {
-  addChallenge(userId, challenge, callback) {
-    this.update(
-      { _id: userId },
-      { $push: { challengesCompleted: challenge } }
-    ).exec(callback);
+Object.assign(userSchema.methods, {
+  addChallenge(challenge, callback) {
+    this
+      .update({ $push: { challengesCompleted: challenge } })
+      .exec(callback);
   }
 });
 

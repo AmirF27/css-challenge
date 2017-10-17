@@ -10,7 +10,7 @@ const User = require('./user.model');
 router.put('/challenge',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    req.user.addChallenge(req.body, (err) => {
+    req.user.addOrUpdateChallenge(req.body, (err) => {
       res.json(err || 'success');
     });
   });

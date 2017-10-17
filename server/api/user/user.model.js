@@ -11,7 +11,7 @@ const userSchema = new Schema({
   },
   challengesCompleted: [{
     _id: false,
-    id: { type: Number, require: true },
+    id: { type: Number, require: true, index: true },
     links: {
       code: { type: String, required: true },
       live: { type: String, required: true }
@@ -21,10 +21,36 @@ const userSchema = new Schema({
 });
 
 Object.assign(userSchema.methods, {
+  addOrUpdateChallenge(challenge, callback) {
+    const index = this.getChallengeIndex(challenge);
+
+    if (index >= 0) {
+      this.updateChallengeByIndex(index, challenge, callback);
+    } else {
+      this.addChallenge(challenge, callback);
+    }
+  },
+
   addChallenge(challenge, callback) {
     this
       .update({ $push: { challengesCompleted: challenge } })
       .exec(callback);
+  },
+
+  updateChallengeByIndex(index, challenge, callback) {
+    const links = `challengesCompleted.${index}.links`;
+
+    this.update({
+      $set: {
+        [`${links}.code`]: challenge.links.code,
+        [`${links}.live`]: challenge.links.live
+      }
+    }).exec(callback);
+  },
+
+  getChallengeIndex(challenge) {
+    return this.challengesCompleted
+      .findIndex((ch) => ch.id === challenge.id);
   }
 });
 

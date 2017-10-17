@@ -83,7 +83,7 @@ describe('SocialAuthService', () => {
         socialAuth.logout();
         const nav = spy.calls.first().args[0];
 
-        expect(nav).toEqual(['/']);
+        expect(nav).toEqual(['']);
     }));
   });
 });

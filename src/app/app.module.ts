@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { AuthHttp } from './classes/auth-http';
 import { ChallengeListService } from './services/challenge-list/challenge-list.service';
 import { SocialAuthService } from './services/social-auth/social-auth.service';
 
@@ -31,6 +32,7 @@ import { LoginComponent } from './components/login/login.component';
   providers: [
     ChallengeListService,
     SocialAuthService,
+    AuthHttp,
     { provide: Window, useValue: window }
   ],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class SocialAuthService {
@@ -33,7 +34,7 @@ export class SocialAuthService {
 
   logout(): void {
     this.clearSession();
-    this.router.navigate(['/']);
+    this.router.navigate(['']);
   }
 
   getToken(): string {
@@ -54,5 +55,9 @@ export class SocialAuthService {
     this.popup = this.window.open(this.authUrl);
     this.popup.document.body.textContent = 'Authenticating...';
     this.popup.focus();
+  }
+
+  get authenticated(): boolean {
+    return tokenNotExpired(this.tokenItem);
   }
 }

@@ -3,11 +3,13 @@ import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 
 import { User } from '../../classes/user';
+import { SocialAuthService } from '../../services/social-auth/social-auth.service';
 
 @Injectable()
 export class UserService {
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private socialAuth: SocialAuthService
   ) { }
 
   getUser(username: string): Promise<User> {
@@ -30,7 +32,8 @@ export class UserService {
       username: res['github']['username'],
       name: res['github']['displayName'],
       visible: res['settings']['profileVisible'],
-      challengesCompleted: res['challengesCompleted'] || []
+      challengesCompleted: res['challengesCompleted'] || [],
+      isCurrentUser: this.socialAuth.isCurrentUser(res['github']['username'])
     });
   }
 }

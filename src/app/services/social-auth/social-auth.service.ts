@@ -37,6 +37,11 @@ export class SocialAuthService {
     this.router.navigate(['']);
   }
 
+  isCurrentUser(username: string): boolean {
+    const profile = JSON.parse(localStorage.getItem('profile'));
+    return profile.github.username === username;
+  }
+
   private setSession(token: string, profile: string): void {
     localStorage.setItem(this.tokenItem, token);
     localStorage.setItem(this.profileItem, profile);

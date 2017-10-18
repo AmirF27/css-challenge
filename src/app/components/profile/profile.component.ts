@@ -16,9 +16,6 @@ export class ProfileComponent {
   ) { }
 
   saveSettings(): void {
-    console.log(this.appearOnLeaderboard);
-    console.log(this.profileVisible);
-
     const body = {
       appearOnLeaderboard: this.appearOnLeaderboard,
       profileVisible: this.profileVisible

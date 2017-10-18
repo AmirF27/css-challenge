@@ -1,16 +1,21 @@
 <div *ngIf="user">
-  <ng-template *ngIf="user.visible; then userInfo else profileHidden"></ng-template>
+  <ng-container *ngIf="user.isCurrentUser; then userInfo else checkVisible"></ng-container>
+
+  <ng-template #checkVisible>
+    <ng-container *ngIf="user.visible; then userInfo else profileHidden"></ng-container>
+  </ng-template>
+
+  <ng-template #userInfo>
+    <h3>{{formatChallengeTitle()}}</h3>
+    <ul>
+      <li *ngFor="let challenge of user.challengesCompleted">
+        <a target="_blank" href="{{challenge.links.code}}">Code</a>
+        <a target="_blank" href="{{challenge.links.live}}">Live version</a>
+      </li>
+    </ul>
+  </ng-template>
+
+  <ng-template #profileHidden>
+    {{user.username}} has chosen to hide their profile.
+  </ng-template>
 </div>
-
-<ng-template #userInfo>
-  <ul>
-    <li *ngFor="let challenge of user.challengesCompleted">
-      <a href="{{challenge.links.code}}">Code</a>
-      <a href="{{challenge.links.live}}">Live version</a>
-    </li>
-  </ul>
-</ng-template>
-
-<ng-template #profileHidden>
-  {{user.username}} has chosen to hide their profile.
-</ng-template>

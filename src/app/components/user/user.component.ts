@@ -23,13 +23,28 @@ export class UserComponent implements OnInit, OnDestroy {
     this.getUser();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 
   getUser(): void {
     this.sub = this.route.paramMap.subscribe((params: ParamMap) => {
       this.userService.getUser(params.get('username'))
-        .then((user) => this.user = user)
+        .then((user) => {
+          this.user = user;
+          console.log(this.user);
+        })
         .catch(console.error)
     });
+  }
+
+  formatChallengeTitle(): string {
+    const person = this.user.isCurrentUser
+      ? 'you have '
+      : `${this.user.username} has `;
+
+    return `Challenges ${person} completed`;
   }
 }

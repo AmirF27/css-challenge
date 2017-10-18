@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthHttp } from './classes/auth-http';
 import { ChallengeListService } from './services/challenge-list/challenge-list.service';
 import { SocialAuthService } from './services/social-auth/social-auth.service';
+import { UserService } from './services/user/user.service';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 import { AppComponent } from './app.component';
@@ -34,9 +35,10 @@ import { UserComponent } from './components/user/user.component';
     HttpClientModule
   ],
   providers: [
+    AuthHttp,
     ChallengeListService,
     SocialAuthService,
-    AuthHttp,
+    UserService,
     { provide: Window, useValue: window }
   ],
   bootstrap: [AppComponent]

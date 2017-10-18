@@ -29,4 +29,10 @@ router.put('/challenge',
     });
   });
 
+  router.get('/leaderboard', (req, res) => {
+    User.getLeaderboard((err, leaderboard) => {
+      res.json(err || leaderboard);
+    });
+  });
+
 module.exports = router;

@@ -32,6 +32,18 @@ Object.assign(userSchema.statics, {
     this
       .findOne({ $text: { $search: username } })
       .exec(callback);
+  },
+
+  getLeaderboard(callback) {
+    this.aggregate([
+      { $match: { 'settings.appearOnLeaderboard': true } },
+      { $project: {
+        _id: 0,
+        username: '$github.username',
+        challengeCount: { $size: '$challengesCompleted' }
+      } },
+      { $sort: { challengeCount: -1 } }
+    ]).exec(callback);
   }
 });
 

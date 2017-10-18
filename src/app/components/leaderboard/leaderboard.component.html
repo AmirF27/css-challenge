@@ -1,0 +1,15 @@
+<table>
+  <caption>User Leaderboard</caption>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Challenges completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of leaderboard">
+      <td>{{item.username}}</td>
+      <td>{{item.challengeCount}}</td>
+    </tr>
+  </tbody>
+</table>

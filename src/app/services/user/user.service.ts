@@ -7,6 +7,8 @@ import { SocialAuthService } from '../../services/social-auth/social-auth.servic
 
 @Injectable()
 export class UserService {
+  baseUrl = '/api/user';
+
   constructor(
     private http: HttpClient,
     private socialAuth: SocialAuthService
@@ -18,12 +20,21 @@ export class UserService {
 
     return new Promise((resolve, reject) => {
       this.http
-        .get('/api/user', { params: query })
+        .get(this.baseUrl, { params: query })
         .subscribe(
           (res: HttpResponse<any>) => {
             resolve(this.constructUserFromResponse(res));
-          }
+          },
+          reject
         );
+    });
+  }
+
+  getLeaderboard(): Promise<any[]> {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(`${this.baseUrl}/leaderboard`)
+        .subscribe(resolve, reject);
     });
   }
 

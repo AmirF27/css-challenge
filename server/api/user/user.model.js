@@ -24,6 +24,16 @@ const userSchema = new Schema({
   }]
 });
 
+userSchema.index({ 'github.username': 'text' });
+
+Object.assign(userSchema.statics, {
+  findByUsername(username, callback) {
+    this
+      .findOne({ $text: { $search: username } })
+      .exec(callback);
+  }
+});
+
 Object.assign(userSchema.methods, {
   updateSettings(settings, callback) {
     this

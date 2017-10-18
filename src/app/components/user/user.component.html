@@ -1,0 +1,16 @@
+<div *ngIf="user">
+  <ng-template *ngIf="user.visible; then userInfo else profileHidden"></ng-template>
+</div>
+
+<ng-template #userInfo>
+  <ul>
+    <li *ngFor="let challenge of user.challengesCompleted">
+      <a href="{{challenge.links.code}}">Code</a>
+      <a href="{{challenge.links.live}}">Live version</a>
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #profileHidden>
+  {{user.username}} has chosen to hide their profile.
+</ng-template>

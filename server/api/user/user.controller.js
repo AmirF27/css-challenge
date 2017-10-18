@@ -7,6 +7,12 @@ const router = require('express').Router();
 const config = require('../../../config');
 const User = require('./user.model');
 
+router.get('/', (req, res) => {
+  User.findByUsername(req.query.username, (err, user) => {
+    res.json(err || user);
+  });
+});
+
 router.put('/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {

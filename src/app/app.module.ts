@@ -15,6 +15,7 @@ import { ChallengeComponent } from './components/challenge/challenge.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     SafeHtmlPipe,
     NavbarComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

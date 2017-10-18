@@ -15,7 +15,8 @@ const userSchema = new Schema({
   },
   challengesCompleted: [{
     _id: false,
-    id: { type: Number, require: true, index: true },
+    id: { type: Number, required: true, index: true },
+    title: { type: String, required: true },
     links: {
       code: { type: String, required: true },
       live: { type: String, required: true }

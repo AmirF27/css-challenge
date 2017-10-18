@@ -32,11 +32,8 @@ export class UserComponent implements OnInit, OnDestroy {
   getUser(): void {
     this.sub = this.route.paramMap.subscribe((params: ParamMap) => {
       this.userService.getUser(params.get('username'))
-        .then((user) => {
-          this.user = user;
-          console.log(this.user);
-        })
-        .catch(console.error)
+        .then((user) => this.user = user)
+        .catch(console.error);
     });
   }
 

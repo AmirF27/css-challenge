@@ -39,7 +39,10 @@ export class SocialAuthService {
 
   isCurrentUser(username: string): boolean {
     const profile = JSON.parse(localStorage.getItem('profile'));
-    return profile.github.username === username;
+
+    return profile
+      ? profile.github.username === username
+      : false;
   }
 
   private setSession(token: string, profile: string): void {

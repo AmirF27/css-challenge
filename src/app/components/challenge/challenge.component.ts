@@ -64,6 +64,7 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
   submitLinks(): void {
     const body = {
       id: this.challenge.id,
+      title: this.challenge.title,
       links: this.formData.links
     };
 

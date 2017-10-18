@@ -1,4 +1,6 @@
-<div *ngIf="user">
+<section *ngIf="user">
+  <h2>{{user.username}}</h2>
+
   <ng-container *ngIf="user.isCurrentUser; then userInfo else checkVisible"></ng-container>
 
   <ng-template #checkVisible>
@@ -9,6 +11,7 @@
     <h3>{{formatChallengeTitle()}}</h3>
     <ul>
       <li *ngFor="let challenge of user.challengesCompleted">
+        <h4>{{challenge.title}}</h4>
         <a target="_blank" href="{{challenge.links.code}}">Code</a>
         <a target="_blank" href="{{challenge.links.live}}">Live version</a>
       </li>
@@ -18,4 +21,4 @@
   <ng-template #profileHidden>
     {{user.username}} has chosen to hide their profile.
   </ng-template>
-</div>
+</section>

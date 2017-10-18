@@ -1,15 +1,18 @@
 <nav>
-  <ul *ngIf="!socialAuth.authenticated; then login else logout"></ul>
+  <ul *ngIf="socialAuth.authenticated; then loggedIn else loggedOut"></ul>
 </nav>
 
-<ng-template #login>
+<ng-template #loggedIn>
   <li>
-    <a routerLink="/login">Login</a>
+    <a routerLink="/profile">Profile</a>
+  </li>
+  <li>
+    <a routerLink="/" (click)="socialAuth.logout()">Logout</a>
   </li>
 </ng-template>
 
-<ng-template #logout>
+<ng-template #loggedOut>
   <li>
-    <a routerLink="/" (click)="socialAuth.logout()">Logout</a>
+    <a routerLink="/login">Login</a>
   </li>
 </ng-template>

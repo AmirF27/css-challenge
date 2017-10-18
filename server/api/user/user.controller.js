@@ -7,6 +7,14 @@ const router = require('express').Router();
 const config = require('../../../config');
 const User = require('./user.model');
 
+router.put('/',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    req.user.updateSettings(req.body, (err) => {
+      res.json(err || 'success');
+    });
+  });
+
 router.put('/challenge',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {

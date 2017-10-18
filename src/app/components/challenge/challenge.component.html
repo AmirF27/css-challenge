@@ -2,7 +2,7 @@
 
 <ng-template #challengeView>
   <div [innerHTML]="challengeHtml | safeHtml"></div>
-  <form (ngSubmit)="submitLinks($event)">
+  <form (ngSubmit)="submitLinks()">
     <label for="code">Code</label>
     <input [(ngModel)]="formData.links.code" id="code" type="text" name="code" required>
     <label for="live">Live version</label>

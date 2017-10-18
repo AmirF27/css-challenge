@@ -1,0 +1,52 @@
+<section>
+  <h2>Settings</h2>
+  <form (ngSubmit)="saveSettings()">
+    <!-- Leaderboard -->
+    <p>Do you wish to appear on the leaderboard?</p>
+
+    <input [(ngModel)]="appearOnLeaderboard"
+           [checked]="appearOnLeaderboard"
+           [value]="true"
+           id="leaderboard-y"
+           type="radio"
+           name="appearOnLeaderboard"
+           required>
+
+    <label for="leaderboard-y">Yes</label>
+
+    <input [(ngModel)]="appearOnLeaderboard"
+           [checked]="appearOnLeaderboard"
+           [value]="false"
+           id="leaderboard-n"
+           type="radio"
+           name="appearOnLeaderboard"
+           required>
+
+    <label for="leaderboard-n">No</label>
+
+    <!-- Profile -->
+    <p>Do you want your profile to be publicly visible?</p>
+
+    <input [(ngModel)]="profileVisible"
+           [checked]="profileVisible"
+           [value]="true"
+           id="profile-y"
+           type="radio"
+           name="profileVisible"
+           required>
+
+    <label for="profile-y">Yes</label>
+
+    <input [(ngModel)]="profileVisible"
+           [checked]="profileVisible"
+           [value]="false"
+           id="profile-n"
+           type="radio"
+           name="profileVisible"
+           required>
+
+    <label for="profile-n">No</label>
+
+    <button type="submit">Save Settings</button>
+  </form>
+</section>

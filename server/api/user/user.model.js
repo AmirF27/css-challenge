@@ -9,6 +9,10 @@ const userSchema = new Schema({
     username: { type: String, required: true },
     displayName: { type: String, required: true }
   },
+  settings: {
+    appearOnLeaderboard: { type: Boolean, defaul: true },
+    profileVisible: { type: Boolean, defaul: true }
+  },
   challengesCompleted: [{
     _id: false,
     id: { type: Number, require: true, index: true },
@@ -21,6 +25,12 @@ const userSchema = new Schema({
 });
 
 Object.assign(userSchema.methods, {
+  updateSettings(settings, callback) {
+    this
+      .update({ $set: { settings } })
+      .exec(callback);
+  },
+
   addOrUpdateChallenge(challenge, callback) {
     const index = this.getChallengeIndex(challenge);
 

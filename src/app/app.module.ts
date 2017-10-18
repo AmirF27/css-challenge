@@ -8,12 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthHttp } from './classes/auth-http';
 import { ChallengeListService } from './services/challenge-list/challenge-list.service';
 import { SocialAuthService } from './services/social-auth/social-auth.service';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 import { AppComponent } from './app.component';
 import { ChallengeComponent } from './components/challenge/challenge.component';
-import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './components/login/login.component';
     ChallengeComponent,
     SafeHtmlPipe,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

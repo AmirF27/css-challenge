@@ -18,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserComponent } from './components/user/user.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
     LoginComponent,
     ProfileComponent,
     UserComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

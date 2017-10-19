@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
+import * as moment from 'moment';
 
 import { User } from '../../classes/user';
 import { SocialAuthService } from '../../services/social-auth/social-auth.service';
@@ -36,6 +37,25 @@ export class UserService {
         .get(`${this.baseUrl}/leaderboard`)
         .subscribe(resolve, reject);
     });
+  }
+
+  getChallengesAsSet(): Map<number, any> {
+    if (!this.socialAuth.authenticated) {
+      return null;
+    }
+
+    let challenges = this.socialAuth.profile.challengesCompleted;
+    challenges = challenges.map(ch => {
+      return [
+        ch.id,
+        {
+          ...ch,
+          date: moment(ch.date).format('MMM DD, YYYY')
+        }
+      ];
+    });
+
+    return new Map<number, any>(challenges);
   }
 
   private constructUserFromResponse(res: HttpResponse<any>): User {

@@ -65,6 +65,10 @@ export class SocialAuthService {
     return localStorage.getItem(this.tokenItem);
   }
 
+  get profile(): any {
+    return JSON.parse(localStorage.getItem(this.profileItem));
+  }
+
   get authenticated(): boolean {
     return tokenNotExpired(this.tokenItem);
   }

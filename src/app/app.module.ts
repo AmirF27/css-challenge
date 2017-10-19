@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 import { ChallengeComponent } from './components/challenge/challenge.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 import { UserComponent } from './components/user/user.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 import { HomeComponent } from './components/home/home.component';
@@ -27,7 +27,7 @@ import { HomeComponent } from './components/home/home.component';
     SafeHtmlPipe,
     NavbarComponent,
     LoginComponent,
-    ProfileComponent,
+    UserSettingsComponent,
     UserComponent,
     LeaderboardComponent,
     HomeComponent

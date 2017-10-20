@@ -24,6 +24,6 @@ export class HomeComponent implements OnInit {
 
   getChallenges(): void {
     this.challenges = this.challengeList.challenges;
-    this.userChallenges = this.userService.getChallengesAsSet();
+    this.userChallenges = this.userService.getUserChallengesAsMap();
   }
 }

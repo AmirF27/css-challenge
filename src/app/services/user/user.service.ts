@@ -19,12 +19,16 @@ export class UserService {
     let query = new HttpParams();
     query = query.set('username', username);
 
+    if (this.socialAuth.isCurrentUser(username)) {
+      return Promise.resolve(this.createUserInstance(this.socialAuth.profile));
+    }
+
     return new Promise((resolve, reject) => {
       this.http
         .get(this.baseUrl, { params: query })
         .subscribe(
           (res: HttpResponse<any>) => {
-            resolve(this.constructUserFromResponse(res));
+            resolve(this.createUserInstance(res));
           },
           reject
         );
@@ -39,32 +43,49 @@ export class UserService {
     });
   }
 
-  getChallengesAsSet(): Map<number, any> {
-    if (!this.socialAuth.authenticated) {
-      return null;
-    }
+  getUserChallenges(): any[] {
+    if (!this.socialAuth.authenticated) { return null; }
 
-    let challenges = this.socialAuth.profile.challengesCompleted;
-    challenges = challenges.map(ch => {
-      return [
-        ch.id,
-        {
-          ...ch,
-          date: moment(ch.date).format('MMM DD, YYYY')
-        }
-      ];
-    });
+    const challenges = this.socialAuth.profile.challengesCompleted;
 
-    return new Map<number, any>(challenges);
+    return this.formatChallenges(challenges, false) as any[];
   }
 
-  private constructUserFromResponse(res: HttpResponse<any>): User {
+  getUserChallengesAsMap(): Map<number, any> {
+    if (!this.socialAuth.authenticated) { return null; }
+
+    const challenges = this.socialAuth.profile.challengesCompleted;
+
+    return this.formatChallenges(challenges, true) as Map<number, any>;
+  }
+
+  private createUserInstance(userData: any): User {
+    console.log(this.formatChallenges(userData['challengesCompleted']));
     return new User({
-      username: res['github']['username'],
-      name: res['github']['displayName'],
-      visible: res['settings']['profileVisible'],
-      challengesCompleted: res['challengesCompleted'] || [],
-      isCurrentUser: this.socialAuth.isCurrentUser(res['github']['username'])
+      username: userData['github']['username'],
+      name: userData['github']['displayName'],
+      visible: userData['settings']['profileVisible'],
+      challengesCompleted: this.formatChallenges(userData['challengesCompleted']),
+      isCurrentUser: this.socialAuth.isCurrentUser(userData['github']['username'])
     });
+  }
+
+  private formatChallengeDate(challenge: any): any {
+    return {
+      ...challenge,
+      date: moment(challenge.date).format('MMM DD, YYYY')
+    };
+  }
+
+  private formatChallenges(challenges: any[] = [], asMap: boolean = false): any[]|Map<number, any> {
+    if (asMap) {
+      challenges = challenges.map(challenge => [
+        challenge.id,
+        this.formatChallengeDate(challenge)
+      ]);
+      return new Map<number, any>(challenges);
+    } else {
+      return challenges.map(challenge => this.formatChallengeDate(challenge));
+    }
   }
 }

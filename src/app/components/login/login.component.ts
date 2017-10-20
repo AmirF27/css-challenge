@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { SocialAuthService } from '../../services/social-auth/social-auth.service';
 
@@ -8,8 +9,14 @@ import { SocialAuthService } from '../../services/social-auth/social-auth.servic
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constructor(private socialAuth: SocialAuthService) { }
+  constructor(
+    private router: Router,
+    private socialAuth: SocialAuthService
+  ) { }
 
   ngOnInit() {
+    if (this.socialAuth.authenticated) {
+      this.router.navigate(['']);
+    }
   }
 }

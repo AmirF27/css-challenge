@@ -4,14 +4,15 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build:prod && node server.js",
+    "start": "node server.js",
     "start:dev": "ng serve --open --proxy proxy.conf.json",
     "build": "ng build",
     "build:prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "supervisor -w server/ config/ server.js -e js,hbs,json -- server.js"
+    "server": "supervisor -w server/ config/ server.js -e js,hbs,json -- server.js",
+    "postinstall": "npm run build:prod"
   },
   "private": true,
   "dependencies": {
@@ -42,11 +43,10 @@
     "passport-github": "^1.1.0",
     "passport-jwt": "^3.0.0",
     "rxjs": "^5.4.1",
+    "typescript": "~2.3.3",
     "zone.js": "0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "1.4.9",
-    "@angular/compiler-cli": "^4.0.0",
     "@angular/language-service": "^4.0.0",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
@@ -64,8 +64,7 @@
     "protractor": "~5.1.2",
     "raw-loader": "^0.5.1",
     "ts-node": "~3.0.4",
-    "tslint": "~5.3.2",
-    "typescript": "~2.3.3"
+    "tslint": "~5.3.2"
   },
   "engines": {
     "node": "7.4.0"

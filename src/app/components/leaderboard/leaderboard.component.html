@@ -8,7 +8,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of leaderboard">
-      <td>{{item.username}}</td>
+      <td><a routerLink="/user/{{item.username}}">{{item.username}}</a></td>
       <td>{{item.challengeCount}}</td>
     </tr>
   </tbody>

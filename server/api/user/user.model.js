@@ -10,8 +10,8 @@ const userSchema = new Schema({
     displayName: { type: String, required: true }
   },
   settings: {
-    appearOnLeaderboard: { type: Boolean, defaul: true },
-    profileVisible: { type: Boolean, defaul: true }
+    appearOnLeaderboard: { type: Boolean, default: true },
+    profileVisible: { type: Boolean, default: true }
   },
   challengesCompleted: [{
     _id: false,

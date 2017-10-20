@@ -60,7 +60,6 @@ export class UserService {
   }
 
   private createUserInstance(userData: any): User {
-    console.log(this.formatChallenges(userData['challengesCompleted']));
     return new User({
       username: userData['github']['username'],
       name: userData['github']['displayName'],

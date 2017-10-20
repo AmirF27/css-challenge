@@ -19,10 +19,6 @@ export class UserService {
     let query = new HttpParams();
     query = query.set('username', username);
 
-    if (this.socialAuth.isCurrentUser(username)) {
-      return Promise.resolve(this.createUserInstance(this.socialAuth.profile));
-    }
-
     return new Promise((resolve, reject) => {
       this.http
         .get(this.baseUrl, { params: query })
@@ -82,6 +78,7 @@ export class UserService {
         challenge.id,
         this.formatChallengeDate(challenge)
       ]);
+      console.log(new Map<number, any>(challenges).keys());
       return new Map<number, any>(challenges);
     } else {
       return challenges.map(challenge => this.formatChallengeDate(challenge));

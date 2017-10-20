@@ -10,6 +10,7 @@ import { ChallengeListService } from './services/challenge-list/challenge-list.s
 import { SocialAuthService } from './services/social-auth/social-auth.service';
 import { UserService } from './services/user/user.service';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { AuthGuard } from './guards/auth.guard';
 
 import { AppComponent } from './app.component';
 import { ChallengeComponent } from './components/challenge/challenge.component';
@@ -43,6 +44,7 @@ import { HomeComponent } from './components/home/home.component';
     ChallengeListService,
     SocialAuthService,
     UserService,
+    AuthGuard,
     { provide: Window, useValue: window }
   ],
   bootstrap: [AppComponent]

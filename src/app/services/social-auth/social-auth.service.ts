@@ -5,6 +5,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 @Injectable()
 export class SocialAuthService {
   authUrl: string;
+  redirectUrl: string;
   private popup: Window;
 
   readonly tokenItem = 'token';
@@ -26,6 +27,7 @@ export class SocialAuthService {
         this.popup.close();
         this.window.focus();
         this.setSession(event.data.token, event.data.profile);
+        this.router.navigate([this.redirectUrl || '']);
       }
     };
 

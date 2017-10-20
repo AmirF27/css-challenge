@@ -3,7 +3,7 @@
     <li>
       <a routerLink="/leaderboard">Leaderboard</a>
     </li>
-    <ng-container *ngIf="socialAuth.authenticated; then loggedIn else loggedOut"></ng-container>
+    <ng-container *ngIf="authenticated; then loggedIn else loggedOut"></ng-container>
   </ul>
 </nav>
 
@@ -12,7 +12,7 @@
     <a routerLink="/settings">Settings</a>
   </li>
   <li>
-    <a routerLink="/" (click)="socialAuth.logout()">Logout</a>
+    <a routerLink="/" (click)="logout()">Logout</a>
   </li>
 </ng-template>
 

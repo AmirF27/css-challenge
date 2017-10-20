@@ -8,10 +8,18 @@ import { SocialAuthService } from '../../services/social-auth/social-auth.servic
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  authenticated: boolean;
+
   constructor(
     private socialAuth: SocialAuthService
-  ) { }
+  ) {
+    this.authenticated = socialAuth.authenticated;
+  }
 
   ngOnInit() {
+  }
+
+  logout(): void {
+    this.socialAuth.logout();
   }
 }

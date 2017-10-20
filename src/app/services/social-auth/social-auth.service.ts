@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
 
@@ -12,7 +12,6 @@ export class SocialAuthService {
   readonly profileItem = 'profile';
 
   constructor(
-    @Inject(Window) private window: Window,
     private router: Router
   ) { }
 
@@ -22,16 +21,16 @@ export class SocialAuthService {
 
     const listener = (event: MessageEvent) => {
       // Make sure the message can be trusted (came from the same origin)
-      if (event.origin.indexOf(this.window.location.hostname) >= 0) {
-        this.window.removeEventListener('message', listener);
+      if (event.origin.indexOf(window.location.hostname) >= 0) {
+        window.removeEventListener('message', listener);
         this.popup.close();
-        this.window.focus();
+        window.focus();
         this.setSession(event.data.token, event.data.profile);
         this.router.navigate([this.redirectUrl || '']);
       }
     };
 
-    this.window.addEventListener('message', listener);
+    window.addEventListener('message', listener);
   }
 
   logout(): void {
@@ -58,7 +57,7 @@ export class SocialAuthService {
   }
 
   private openPopup(): void {
-    this.popup = this.window.open(this.authUrl);
+    this.popup = window.open(this.authUrl);
     this.popup.document.body.textContent = 'Authenticating...';
     this.popup.focus();
   }

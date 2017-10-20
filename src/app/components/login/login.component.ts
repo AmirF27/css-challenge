@@ -19,4 +19,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['']);
     }
   }
+
+  login(url: string): void {
+    this.socialAuth.login('/auth/github');
+  }
 }

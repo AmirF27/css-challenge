@@ -16,9 +16,10 @@ import { Challenge } from '../../classes/challenge';
 export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
   readonly notFoundMessage = 'Challenge not found.';
 
-  private challenge: Challenge;
-  private challengeHtml: string;
   private sub: Subscription;
+
+  challenge: Challenge;
+  challengeHtml: string;
 
   formData = {
     links: {

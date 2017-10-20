@@ -44,8 +44,7 @@ import { HomeComponent } from './components/home/home.component';
     ChallengeListService,
     SocialAuthService,
     UserService,
-    AuthGuard,
-    { provide: Window, useValue: window }
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

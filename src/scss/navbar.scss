@@ -1,0 +1,49 @@
+.nav {
+  height: $navbar-height;
+}
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+
+  .navbar__link {
+    display: inline-block;
+  }
+
+  .navbar__logo {
+    @extend .left;
+
+    font-size: $logo-font-size;
+    letter-spacing: $logo-letter-spacing;
+    margin: 0;
+  }
+
+  .navbar__link,
+  .navbar__logo {
+    line-height: $navbar-height;
+    text-transform: uppercase;
+    transition: $default-transition;
+
+    a {
+      color: $color-accent;
+      display: inline-block;
+      height: 100%;
+      padding-left: $navbar-link-padding;
+      padding-right: $navbar-link-padding;
+      transition: $default-transition;
+    }
+
+    &:hover {
+      background: $color-accent;
+
+      & a {
+        color: $color-primary;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.navbar--right {
+  @extend .right;
+}

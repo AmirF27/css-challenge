@@ -1,0 +1,27 @@
+body {
+  background: lighten($color-secondary, 15%);
+  color: $color-text-primary;
+  font-family: $default-font-family;
+  margin: 0;
+}
+
+a {
+  color: $color-text-secondary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+header {
+  background: $color-primary;
+}
+
+label {
+  cursor: pointer;
+}
+
+h4 {
+  margin-top: 0;
+}

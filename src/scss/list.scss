@@ -1,0 +1,48 @@
+.list {
+  list-style-type: none;
+  padding: 0;
+
+  .list__item {
+    background: lighten($color-accent, 10%);
+    background: rgba($color-accent, 0.4);
+    border: $list-item-border;
+    border-radius: $control-border-radius;
+    display: block;
+    margin-bottom: $list-item-spacing;
+    padding: $list-item-spacing;
+
+    &.list__item--link {
+      display: flex;
+      padding: 0;
+
+      a {
+        display: inline-block;
+        flex: 1;
+        padding: $list-item-spacing;
+      }
+
+      .button {
+        flex: 0 0 15%;
+        margin: auto $list-item-spacing auto 0;
+      }
+    }
+  }
+}
+
+.list--books {
+  .list--books__image {
+    height: $book-image-height;
+    margin-bottom: $list-item-spacing;
+  }
+
+  .list--books__info {
+    display: block;
+    font-size: .8rem;
+    font-style: italic;
+    margin-bottom: $list-item-spacing;
+  }
+
+  .list__item:nth-child(4n) {
+    margin-right: 0;
+  }
+}

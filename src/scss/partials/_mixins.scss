@@ -1,0 +1,13 @@
+@mixin clearfix() {
+  &:after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+}
+
+@mixin rounded($size) {
+  border-radius: 50%;
+  height: $size;
+  width: $size;
+}

@@ -1,0 +1,20 @@
+.alert {
+  border-radius: $control-border-radius;
+  box-shadow: $default-shadow;
+  margin-bottom: $alert-margin-bottom;
+  padding: $alert-padding;
+
+  .alert__close {
+    cursor: pointer;
+    float: right;
+    margin-left: $alert-close-margin;
+  }
+}
+
+.alert--error {
+  background: $alert-error-color;
+}
+
+.alert--success {
+  background: $alert-success-color;
+}

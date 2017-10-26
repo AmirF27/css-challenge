@@ -1,0 +1,126 @@
+// COLORS
+
+$dark-gray: #605b56;
+$gray: #837a75;
+$lime: #acc18a;
+$light-gray: #f2fbe0;
+$red: #9b1d20;
+$light-red: lighten($red, 30%);
+$blue: #748cab;
+$dark-blue: #2a2b2e;
+
+$color-primary: $dark-gray;
+$color-secondary: $gray;
+$color-text-primary: $dark-blue;
+$color-text-secondary: darken($blue, 20%);
+$color-accent: $lime;
+$color-divider: $light-gray;
+$color-negative: $red;
+$color-negative-light: $light-red;
+
+$button-default-bg: $color-primary;
+$button-default-color: $color-accent;
+$button-primary-bg: $blue;
+$button-primary-color: $color-text-primary;
+$button-secondary-bg: $color-accent;
+$button-secondary-color: $color-primary;
+$button-negative-bg: $color-negative;
+$button-negative-color: $color-negative-light;
+
+$input-border-color: lighten($color-primary, 10%);
+$input-border-focus-color: darken($blue, 15%);
+$input-shadow: inset 0 0 2px $input-border-color;
+$input-focus-shadow: inset 0 0 4px $input-border-focus-color;
+
+$shadow-color: lighten($color-primary, 10%);
+$checkbox-shadow-color: darken($color-primary, 30%);
+
+
+// LAYOUT
+
+$page-top-spacing: 40px;
+$container-width: 960px;
+$default-border-width: 1px;
+
+
+// GRID
+
+$col-min: 1;
+$col-max: 12;
+$grid-spacing: 15px;
+
+$devices: (
+  m: 480px, // mobile
+  t: 768px, // tablet
+  d: 992px // desktop
+);
+
+
+// TYPOGRAPHY
+
+$default-font-family: 'Raleway', sans-serif;
+$logo-font-size: 1.5rem;
+$logo-letter-spacing: .1em;
+
+
+// NAVBAR
+
+$navbar-height: 60px;
+$navbar-link-padding: 15px;
+
+
+// CONTROLS
+
+$form-default-width: $container-width / 2;
+$input-margin-bottom: 15px;
+$input-margin-top: $input-margin-bottom / 3;
+$input-padding: 10px;
+$form-inline-input-width: 300px;
+
+$control-height: 40px;
+$control-border-radius: 3px;
+
+$button-types: (
+  default,
+  primary,
+  secondary,
+  negative,
+);
+
+$button-padding: 15px;
+$button-margin: 10px;
+$button-font-size: .9rem;
+$button-font-weight: 600;
+
+$button-small-height: 25px;
+$button-small-padding: 8px;
+$button-small-font-size: .8rem;
+
+$default-shadow: 0 1px 2px $shadow-color;
+$button-hover-shadow: 0 3px 2px $shadow-color;
+
+$default-transition: all .15s linear;
+
+$radio-size: 15px;
+$checkbox-border: 2px solid $color-primary;
+$checkbox-shadow: inset 0 0 10px $checkbox-shadow-color;
+$checkbox-checked-shadow: inset 0 0 5px $checkbox-shadow-color;
+$checkbox-margin-bottom: 10px;
+$checkbox-margin-right: $checkbox-margin-bottom / 2;
+
+
+// ALERT
+
+$alert-padding: 20px;
+$alert-margin-bottom: 30px;
+$alert-close-margin: 15px;
+
+$alert-success-color: $color-accent;
+$alert-error-color: $color-negative-light;
+
+
+// LIST
+
+$list-item-border: 1px solid $color-accent;
+$list-item-spacing: 15px;
+$book-image-height: 200px;

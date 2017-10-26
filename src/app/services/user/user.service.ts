@@ -78,7 +78,6 @@ export class UserService {
         challenge.id,
         this.formatChallengeDate(challenge)
       ]);
-      console.log(new Map<number, any>(challenges).keys());
       return new Map<number, any>(challenges);
     } else {
       return challenges.map(challenge => this.formatChallengeDate(challenge));

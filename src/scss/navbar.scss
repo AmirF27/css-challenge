@@ -3,18 +3,31 @@
 }
 
 .navbar {
-  list-style-type: none;
+  display:inline-block;
   margin: 0;
 
+  background: $color-primary;
+
+
+  ul {
+    list-style:none;
+    display: inline;
+  }
+  li {
+    display:inline-block;
+  }
+
   .navbar__link {
-    display: inline-block;
+    display:inline-block;
   }
 
   .navbar__logo {
     @extend .left;
-
+    padding-left: 20px;
+    display: inline-block;
     font-size: $logo-font-size;
     letter-spacing: $logo-letter-spacing;
+    color: #ffffff;
     margin: 0;
   }
 

@@ -4,7 +4,9 @@
   <div class="challenge">
     <div class="challenge__submit">
       <h2>Challenge: {{challenge.title}}</h2>
+
       <form class="component__form" (ngSubmit)="submitLinks()">
+
 
 
         <label for="code">Code</label>
@@ -13,6 +15,7 @@
         <label for="live">Live version</label>
         <input class="form__input" [(ngModel)]="formData.links.live" id="live" type="text" name="live" required>
         <br>
+
         <button class="component__button" type="submit">Submit Links</button>
       </form>
 

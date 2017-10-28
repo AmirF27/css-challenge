@@ -1,27 +1,35 @@
-<nav  class="nav navbar">
-  <span class="navbar__logo"><a routerLink="/">CSS Challenge</a></span>
-  <ul>
+<nav  class="nav container">
+  <ul class="navbar">
+    <li class="navbar__logo"><a routerLink="/">CSS Challenge</a></li>
     <li class="navbar__link">
       <a routerLink="/leaderboard">Leaderboard</a>
     </li>
     <li class="navbar__link">
       <a routerLink="/">Challenge List</a>
     </li>
+  </ul>
+  <ul class="navbar navbar--right">
     <ng-container *ngIf="authenticated; then loggedIn else loggedOut"></ng-container>
   </ul>
 </nav>
 
 <ng-template #loggedIn>
   <li class="navbar__link">
-    <a  routerLink="/settings">Settings</a>
+    <a  routerLink="/settings">
+      <i class="fa fa-cog" aria-hidden="true"></i> Settings
+    </a>
   </li>
   <li class="navbar__link">
-    <a routerLink="/" (click)="logout()">Logout</a>
+    <a routerLink="/" (click)="logout()">
+      <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+    </a>
   </li>
 </ng-template>
 
 <ng-template #loggedOut>
   <li class="navbar__link">
-    <a routerLink="/login">Login</a>
+    <a routerLink="/login">
+      <i class="fa fa-sign-in" aria-hidden="true"></i> Login
+    </a>
   </li>
 </ng-template>

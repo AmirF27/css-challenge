@@ -62,6 +62,10 @@ export class SocialAuthService {
     this.popup.focus();
   }
 
+  public setProfile(profile: string): void {
+    localStorage.setItem(this.profileItem, profile);
+  }
+
   get token(): string {
     return localStorage.getItem(this.tokenItem);
   }
@@ -69,6 +73,7 @@ export class SocialAuthService {
   get profile(): any {
     return JSON.parse(localStorage.getItem(this.profileItem));
   }
+
 
   get authenticated(): boolean {
     return tokenNotExpired(this.tokenItem);

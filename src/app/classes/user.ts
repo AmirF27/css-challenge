@@ -4,6 +4,7 @@ export class User {
   readonly visible: boolean;
   readonly challengesCompleted: any[];
   readonly isCurrentUser: boolean;
+  readonly settings: {appearOnLeaderboard: boolean, profileVisible: boolean};
 
   constructor(options) {
     this.username = options.username;
@@ -13,5 +14,6 @@ export class User {
       ? options.challengesCompleted
       : [];
     this.isCurrentUser = options.isCurrentUser || false;
+    this.settings = options.settings || {  appearOnLeaderboard: true,  profileVisible: true};
   }
 }

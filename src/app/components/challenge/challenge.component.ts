@@ -20,6 +20,8 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   challenge: Challenge;
   challengeHtml: string;
+  previousChallenge: number;
+  nextChallenge: number;
 
   formData = {
     links: {
@@ -55,9 +57,16 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.sub = this.route.paramMap.subscribe((params: ParamMap) => {
       const challengeId = parseInt(params.get('id'), 10);
       this.challenge = this.challengeList.getById(challengeId);
-      console.log(this.challenge);
+
       if (this.challenge) {
         this.challengeHtml = this.challenge.formatHtml();
+        if (this.challenge.id > 1) {
+          this.previousChallenge = this.challenge.id - 1;
+        }
+        if (this.challenge.id < 100) {
+          this.nextChallenge = this.challenge.id + 1;
+        }
+        console.log(this.challenge.id, this.previousChallenge, this.nextChallenge);
       }
     });
   }

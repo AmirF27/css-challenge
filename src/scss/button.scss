@@ -1,5 +1,6 @@
-.button {
+.component__button {
   border: none;
+  z-index: 10;
   border-radius: $control-border-radius;
   box-shadow: $default-shadow;
   cursor: pointer;
@@ -15,7 +16,8 @@
   text-align: center;
   text-decoration: none;
   transition: $default-transition;
-
+  background: $dark-gray;
+  color: #ffffff;
   &:hover {
     box-shadow: $button-hover-shadow;
     text-decoration: none;

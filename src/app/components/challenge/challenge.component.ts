@@ -22,6 +22,7 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
   challengeHtml: string;
   previousChallenge: number;
   nextChallenge: number;
+  confirmation: string;
 
   formData = {
     links: {
@@ -54,10 +55,11 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   getChallenge(): void {
+
     this.sub = this.route.paramMap.subscribe((params: ParamMap) => {
       const challengeId = parseInt(params.get('id'), 10);
       this.challenge = this.challengeList.getById(challengeId);
-
+      this.confirmation = '';
       if (this.challenge) {
         this.challengeHtml = this.challenge.formatHtml();
         if (this.challenge.id > 1) {
@@ -66,7 +68,6 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
         if (this.challenge.id < 100) {
           this.nextChallenge = this.challenge.id + 1;
         }
-        console.log(this.challenge.id, this.previousChallenge, this.nextChallenge);
       }
     });
   }
@@ -80,6 +81,14 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     this.authHttp
       .put('/api/user/challenge', body)
-      .subscribe(console.log);
+      .subscribe((result) => {
+        if (result === 'success') {
+          this.formData.links.code = '';
+          this.formData.links.live = '';
+          this.confirmation = 'Challenge submitted.';
+        } else {
+          this.confirmation = 'Submission failed.';
+        }
+      });
   }
 }

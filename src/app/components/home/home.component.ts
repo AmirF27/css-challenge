@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Challenge } from '../../classes/challenge';
 import { ChallengeListService } from '../../services/challenge-list/challenge-list.service';
 import { UserService } from '../../services/user/user.service';
+import { SocialAuthService } from '../../services/social-auth/social-auth.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private challengeList: ChallengeListService,
-    private userService: UserService
+    private userService: UserService,
+    private socialAuth: SocialAuthService
   ) { }
 
   ngOnInit() {

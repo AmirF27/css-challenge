@@ -9,7 +9,7 @@
     </li>
   </ul>
   <ul class="navbar navbar--right">
-    <ng-container *ngIf="authenticated; then loggedIn else loggedOut"></ng-container>
+    <ng-container *ngIf="socialAuth.authenticated; then loggedIn else loggedOut"></ng-container>
   </ul>
 </nav>
 

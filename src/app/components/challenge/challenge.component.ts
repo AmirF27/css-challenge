@@ -55,7 +55,7 @@ export class ChallengeComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.sub = this.route.paramMap.subscribe((params: ParamMap) => {
       const challengeId = parseInt(params.get('id'), 10);
       this.challenge = this.challengeList.getById(challengeId);
-
+      console.log(this.challenge);
       if (this.challenge) {
         this.challengeHtml = this.challenge.formatHtml();
       }

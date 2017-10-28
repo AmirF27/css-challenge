@@ -1,6 +1,6 @@
-<ul>
-  <li *ngFor="let challenge of challenges">
-    <a routerLink="/challenge/{{challenge.id}}">{{challenge.title}}</a>
+<ul class="list">
+  <li class="list__item" *ngFor="let challenge of challenges">
+    <a class="list__item--link" routerLink="/challenge/{{challenge.id}}">{{challenge.title}}</a>
     <span *ngIf="userChallenges && userChallenges.has(challenge.id)">
       Completed on {{userChallenges.get(challenge.id).date}}
     </span>

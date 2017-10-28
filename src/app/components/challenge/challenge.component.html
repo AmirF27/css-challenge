@@ -4,16 +4,16 @@
   <div class="challenge">
     <div class="challenge__submit">
       <h2>Challenge: {{challenge.title}}</h2>
-      <form (ngSubmit)="submitLinks()">
+      <form class="form" (ngSubmit)="submitLinks()">
 
 
         <label for="code">Code</label>
-        <input [(ngModel)]="formData.links.code" id="code" type="text" name="code" required>
+        <input class="form__input" [(ngModel)]="formData.links.code" id="code" type="text" name="code" required>
         <br>
         <label for="live">Live version</label>
-        <input [(ngModel)]="formData.links.live" id="live" type="text" name="live" required>
+        <input class="form__input" [(ngModel)]="formData.links.live" id="live" type="text" name="live" required>
         <br>
-        <button type="submit">Submit Links</button>
+        <button class="button" type="submit">Submit Links</button>
       </form>
     </div>
     <div class="challenge__demo" [innerHTML]="challengeHtml | safeHtml"></div>

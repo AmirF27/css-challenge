@@ -5,21 +5,18 @@
   position: relative;
 }
 
-.challenge__demo, .challenge__submit {
-  flex-basis: 120px;
+.challenge__demo {
+  flex-basis: 275px;
   margin: 10px auto;
 }
-.challenge__submit {
-  flex-basis: 575px;
-  margin: 10px auto;
-}
-.challenge__submit {
 
+.challenge__submit {
+  flex-basis: 750px;
+  margin: 10px auto;
   border-radius: 2px;
   box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
   background: #ffffff;
   width: 400px;
-  height: 650px;
   margin-bottom: 50px;
   padding: 20px;
 
@@ -34,17 +31,14 @@
     margin-top: -20px;
     text-align: center;
   }
+
   label {
     display: inline-block;
     min-width: 100px;
   }
-  button {
-    padding: 10px;
-    background: #777;
-    color: #fff;
-  }
-  input {
+
+  .form__input {
     margin-bottom: 5px;
-    min-width: 250px;
+    width: 380px;
   }
 }

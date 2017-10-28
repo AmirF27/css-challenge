@@ -10,7 +10,7 @@ $blue: #748cab;
 $dark-blue: #2a2b2e;
 
 $color-primary: $dark-gray;
-$color-secondary: $gray;
+$color-secondary: lighten($gray, 30%);
 $color-text-primary: $dark-blue;
 $color-text-secondary: darken($blue, 20%);
 $color-accent: $lime;

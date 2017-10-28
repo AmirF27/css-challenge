@@ -4,7 +4,7 @@
   <div class="challenge">
     <div class="challenge__submit">
       <h2>Challenge: {{challenge.title}}</h2>
-      <form class="form" (ngSubmit)="submitLinks()">
+      <form class="component__form" (ngSubmit)="submitLinks()">
 
 
         <label for="code">Code</label>
@@ -13,9 +13,15 @@
         <label for="live">Live version</label>
         <input class="form__input" [(ngModel)]="formData.links.live" id="live" type="text" name="live" required>
         <br>
-        <button class="button" type="submit">Submit Links</button>
+        <button class="component__button" type="submit">Submit Links</button>
       </form>
+
+      <div class="challenge__navlinks">
+        <button class="component__button" routerLink="/challenge/{{previousChallenge}}"><span class="fa fa-arrow-left"></span> Prev</button>
+        <button class="component__button" routerLink="/challenge/{{nextChallenge}}">Next <span class="fa fa-arrow-right"></span></button>
+      </div>
     </div>
+
     <div class="challenge__demo" [innerHTML]="challengeHtml | safeHtml"></div>
   </div>
 

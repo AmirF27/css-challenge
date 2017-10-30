@@ -1,21 +1,24 @@
 .nav {
   height: $navbar-height;
+  display: flex;
+  justify-content: center;
 }
 
 .navbar {
   background: $color-primary;
-  display: inline-block;
+  // display: inline-block;
+  display: flex;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0; 
 
   .navbar__link {
-    display: inline-block;
+    // display: inline-block;
   }
 
   .navbar__logo {
     @extend .left;
-    display: inline-block;
+    // display: inline-block;
     font-size: $logo-font-size;
     letter-spacing: $logo-letter-spacing;
     color: #ffffff;
@@ -50,4 +53,14 @@
 
 .navbar--right {
   @extend .right;
+}
+
+@media screen and (max-width: 980px) {
+  header {
+    height: 200px;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
 }

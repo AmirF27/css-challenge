@@ -13,17 +13,19 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { AuthGuard } from './guards/auth.guard';
 
 import { AppComponent } from './app.component';
+import { AboutComponent} from './components/about/about.component';
 import { ChallengeComponent } from './components/challenge/challenge.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 import { UserComponent } from './components/user/user.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
-import { HomeComponent } from './components/home/home.component';
+import { ChallengesComponent } from './components/challenges/challenges.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AboutComponent,
     ChallengeComponent,
     SafeHtmlPipe,
     NavbarComponent,
@@ -31,7 +33,7 @@ import { HomeComponent } from './components/home/home.component';
     UserSettingsComponent,
     UserComponent,
     LeaderboardComponent,
-    HomeComponent
+    ChallengesComponent
   ],
   imports: [
     BrowserModule,

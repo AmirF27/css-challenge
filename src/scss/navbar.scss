@@ -28,11 +28,6 @@
     };
   }
 
-  .navbar__link {
-    a {
-      padding-left: 15px;
-    }
-  }
   .navbar__link,
   .navbar__logo {
     line-height: $navbar-height;
@@ -43,7 +38,7 @@
       color: $color-accent;
       display: inline-block;
       height: 100%;
-      //padding-left: $navbar-link-padding;
+      padding-left: $navbar-link-padding;
       padding-right: $navbar-link-padding;
       transition: $default-transition;
     }

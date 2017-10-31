@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   authenticated: boolean;
 
   constructor(
-    private socialAuth: SocialAuthService
+    public socialAuth: SocialAuthService
   ) {
     this.authenticated = socialAuth.authenticated;
   }

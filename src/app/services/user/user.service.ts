@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs/Subscription';
 import * as moment from 'moment';
 
 import { User } from '../../classes/user';
-import { SocialAuthService } from '../../services/social-auth/social-auth.service';
+import { SocialAuthService } from '../social-auth/social-auth.service';
 
 @Injectable()
 export class UserService {
@@ -38,9 +37,11 @@ export class UserService {
         .subscribe(resolve, reject);
     });
   }
-
+/*
   getUserChallenges(): any[] {
     if (!this.socialAuth.authenticated) { return null; }
+    const username = JSON.parse(localStorage.getItem('profile')).github.username;
+
 
     const challenges = this.socialAuth.profile.challengesCompleted;
 
@@ -54,7 +55,7 @@ export class UserService {
 
     return this.formatChallenges(challenges, true) as Map<number, any>;
   }
-
+*/
   private createUserInstance(userData: any): User {
     return new User({
       username: userData['github']['username'],
@@ -72,7 +73,7 @@ export class UserService {
     };
   }
 
-  private formatChallenges(challenges: any[] = [], asMap: boolean = false): any[]|Map<number, any> {
+  public formatChallenges(challenges: any[] = [], asMap: boolean = false): any[]|Map<number, any> {
     if (asMap) {
       challenges = challenges.map(challenge => [
         challenge.id,

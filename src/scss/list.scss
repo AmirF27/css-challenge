@@ -2,9 +2,9 @@
   list-style-type: none;
   padding: 0;
   // Stuff I added
-  display: flex;
-  flex-direction: column;
-  width: 960px;
+  //display: flex;
+ //flex-direction: column;
+  //width: 960px;
   // Stuff I added
 
   .list__item {
@@ -12,8 +12,8 @@
     background: rgba($color-accent, 0.4);
     border: $list-item-border;
     border-radius: $control-border-radius;
-    // display: block;
-    display: flex;
+    display: block;
+    //display: flex;
     margin-bottom: $list-item-spacing;
     padding: $list-item-spacing;
 

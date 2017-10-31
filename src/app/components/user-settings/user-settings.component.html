@@ -1,6 +1,6 @@
 <section>
   <h2>Settings</h2>
-  <form (ngSubmit)="saveSettings()">
+  <form (ngSubmit)="saveSettings()" class="component__form">
     <!-- Leaderboard -->
     <p>Do you wish to appear on the leaderboard?</p>
 
@@ -10,6 +10,7 @@
            id="leaderboard-y"
            type="radio"
            name="appearOnLeaderboard"
+           class="form__radio"
            required>
 
     <label for="leaderboard-y">Yes</label>
@@ -20,6 +21,7 @@
            id="leaderboard-n"
            type="radio"
            name="appearOnLeaderboard"
+           class="form__radio"
            required>
 
     <label for="leaderboard-n">No</label>
@@ -34,6 +36,7 @@
            id="profile-y"
            type="radio"
            name="profileVisible"
+           class="form__radio"
            required>
 
     <label for="profile-y">Yes</label>
@@ -44,6 +47,7 @@
            id="profile-n"
            type="radio"
            name="profileVisible"
+           class="form__radio"
            required>
 
     <label for="profile-n">No</label>

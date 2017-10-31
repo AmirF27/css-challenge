@@ -1,13 +1,19 @@
 .list {
   list-style-type: none;
   padding: 0;
+  // Stuff I added
+  display: flex;
+  flex-direction: column;
+  width: 960px;
+  // Stuff I added
 
   .list__item {
     background: lighten($color-accent, 10%);
     background: rgba($color-accent, 0.4);
     border: $list-item-border;
     border-radius: $control-border-radius;
-    display: block;
+    // display: block;
+    display: flex;
     margin-bottom: $list-item-spacing;
     padding: $list-item-spacing;
 
@@ -44,5 +50,18 @@
 
   .list__item:nth-child(4n) {
     margin-right: 0;
+  }
+}
+
+
+@media screen and (max-width: 980px) {
+  .list {
+    width: 480px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .list {
+    width: 360px;
   }
 }

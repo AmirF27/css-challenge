@@ -13,10 +13,11 @@ main {
 }
 
 .container {
-  @extend .center-block;
-  @include clearfix;
-
-  width: $container-width;
+  // @extend .center-block;
+  // @include clearfix;
+  display: flex;
+  justify-content: center;
+  // width: $container-width;
 }
 
 .left {

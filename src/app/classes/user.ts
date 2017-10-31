@@ -5,6 +5,7 @@ export class User {
   readonly challengesCompleted: any[];
   readonly isCurrentUser: boolean;
   readonly settings: {appearOnLeaderboard: boolean, profileVisible: boolean};
+  readonly github: {id: number, username: string, displayName: string};
 
   constructor(options) {
     this.username = options.username;
@@ -15,5 +16,6 @@ export class User {
       : [];
     this.isCurrentUser = options.isCurrentUser || false;
     this.settings = options.settings || {  appearOnLeaderboard: true,  profileVisible: true};
+    this.github = options.github
   }
 }

@@ -3,19 +3,20 @@ import {DoCheck, Component, OnInit} from '@angular/core';
 import { Challenge } from '../../classes/challenge';
 import { ChallengeListService } from '../../services/challenge-list/challenge-list.service';
 import { UserService } from '../../services/user/user.service';
-
+import { SocialAuthService} from "../../services/social-auth/social-auth.service"
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './challenges.component.html',
+  styleUrls: ['./challenges.component.scss']
 })
-export class HomeComponent implements OnInit, DoCheck {
+export class ChallengesComponent implements OnInit, DoCheck {
   challenges: Challenge[];
   userChallenges: Map<number, any>;
 
   constructor(
     private challengeList: ChallengeListService,
-    private userService: UserService
+    private userService: UserService,
+    public socialAuth: SocialAuthService
   ) { }
 
   ngOnInit() {

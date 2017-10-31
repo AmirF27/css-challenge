@@ -1,4 +1,4 @@
-import {DoCheck, Component, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 import { Challenge } from '../../classes/challenge';
 import { ChallengeListService } from '../../services/challenge-list/challenge-list.service';
@@ -9,7 +9,7 @@ import { SocialAuthService} from "../../services/social-auth/social-auth.service
   templateUrl: './challenges.component.html',
   styleUrls: ['./challenges.component.scss']
 })
-export class ChallengesComponent implements OnInit, DoCheck {
+export class ChallengesComponent implements OnInit {
   challenges: Challenge[];
   userChallenges: Map<number, any>;
 
@@ -20,9 +20,6 @@ export class ChallengesComponent implements OnInit, DoCheck {
   ) { }
 
   ngOnInit() {
-    this.getChallenges();
-  }
-  ngDoCheck() {
     this.getChallenges();
   }
   getChallenges(): void {
